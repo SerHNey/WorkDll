@@ -44,14 +44,14 @@ void MyFunc() {
 		fclose(pFile);
 	}
 	HANDLE file = CreateFile(L"Users.csv", GENERIC_READ, NULL,0, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	char* storoka =(char*) calloc(size+1, 1);
+	void* storoka = calloc(size+1, 1);
 	DWORD bytes;
-	ReadFile(file, storoka,size+1 , &bytes, NULL);
+	ReadFile(file, storoka,size , &bytes, NULL);
 	CloseHandle(file);
 	//char* person;
 	//person = strtok(storoka, " ");
 	file = CreateFile(L"resylt.csv", GENERIC_WRITE, NULL, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	WriteFile(file, storoka, strlen(storoka), &bytes, NULL);
+	WriteFile(file, storoka, size, &bytes, NULL);
 
 
 }
